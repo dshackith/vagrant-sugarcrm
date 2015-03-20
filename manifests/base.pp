@@ -54,7 +54,7 @@ class sugarcrm {
 }
 
 class prepare_system {
-  class {'apt::update': }->
+  class {'apt::update': }
 
   #
   # Set up apache.
