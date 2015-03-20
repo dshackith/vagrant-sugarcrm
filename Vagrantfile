@@ -11,7 +11,7 @@ Vagrant::Config.run do |config|
   # config.nfs.map_gid = 33
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "debian_6_0_6"
+  config.vm.box = "precise64
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
