@@ -1,4 +1,4 @@
-$sugarDir = "SugarCE-Full-6.5.8"
+$sugarDir = "bsys-sugar-ws"
 
 group { "puppet":
     ensure => "present",
@@ -10,8 +10,8 @@ group { "staff":
 
 class sugarcrm {
   exec { 'unpack-sugarcrm':
-    command => '/usr/bin/unzip -qq /vagrant/SugarCE-6.5.8.zip',
-    require => Package['unzip'],
+    command => '',
+    #require => Package['unzip'],
     cwd => '/var/www/',
     path => '/usr/bin',
     creates => "/var/www/${sugarDir}/modules/"
@@ -39,7 +39,7 @@ class sugarcrm {
   }
 
   exec { 'copy_config':
-    command => "cp /vagrant/manifests/sugarcrm/files/config.php /var/www/${sugarDir}/config.php",
+    command => "cp /vagrant/manifests/sugarcrm/files/db_config.php /var/www/${sugarDir}/db_config.php",
     path => '/bin',
     require => Exec['unpack-sugarcrm']
   }
@@ -61,7 +61,7 @@ class prepare_system {
   #
   class {'apache': }
   
-  package {['php5', 'php5-mysql', 'php5-gd', 'libapache2-mod-php5', 'unzip', 'git', 'php5-curl']: }
+  package {['php5', 'php5-mysql', 'php5-gd', 'php5-imap', 'php-apc', 'php5-memcached', 'libapache2-mod-php5', 'unzip', 'git', 'php5-curl']: }
 
   #
   # Set up Mysql.
