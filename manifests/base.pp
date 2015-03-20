@@ -47,7 +47,7 @@ class sugarcrm {
   mysql::db { 'sugarcrm':
     user => 'sugarcrm',
     password => 'sugarcrm',
-    sql => '/vagrant/manifests/sugarcrm/files/sugarcrm.sql',
+    sql => ['/vagrant/manifests/sugarcrm/files/sugar_db_structure.sql','/vagrant/manifests/sugarcrm/files/sugar_basic_data.sql'],
     require => File['/root/.my.cnf']
   }
 
